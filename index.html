@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBT Portal - WAEC/JAMB Style</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>CBT Examination Portal</h1>
+
+    <div id="start-screen">
+      <input type="text" id="studentName" placeholder="Enter Candidate Full Name">
+      <br>
+      <button class="btn-blue" onclick="startExam()">Sign In & Start</button>
+    </div>
+
+    <div id="exam-screen" style="display:none;">
+      
+      <div class="exam-main">
+        <div class="student-info-bar">Candidate: <span id="display-name">---</span></div>
+        
+        <div id="question-container" class="question-box"></div>
+
+        <div class="nav-buttons">
+          <button class="btn-gray" id="prev-btn" onclick="changeQuestion(-1)">Previous</button>
+          <button class="btn-blue" id="next-btn" onclick="changeQuestion(1)">Next</button>
+        </div>
+      </div>
+
+      <div class="exam-sidebar">
+        <div id="timer">Time Left: 02:00</div>
+        
+        <div style="font-weight: bold; font-size: 14px; color: #555;">Question Navigation:</div>
+        <div class="number-matrix" id="matrix-grid"></div>
+
+        <button class="btn-green" style="margin-top: auto;" onclick="submitExam()">Submit Examination</button>
+      </div>
+
+    </div>
+
+    <div id="result" style="display: none;"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
