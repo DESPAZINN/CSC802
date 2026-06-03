@@ -10,7 +10,7 @@
 
   <header class="top-navbar">
     <div class="nav-logo">
-      <img src="Logo.jpg" alt="Exam Logo">
+      <img src="images/Logo.jpg" alt="Exam Logo">
       <span>MTU PORTAL-CSC 802</span>
     </div>
     <nav class="nav-links">
@@ -28,40 +28,33 @@
 
     <div id="start-screen">
       <div class="portal-branding-img">
-        <img src="https://placehold.co/100x100?text=PORTAL" alt="Portal Branding Badge">
+       <img src="images/Brand.png" alt="Portal Branding Badge">
       </div>
-      <input type="text" id="studentName" placeholder="Enter Candidate Full Name">
+      <input type="text" id="studentName" placeholder="Candidate's Full Name">
       <br>
-      <button class="btn-blue" onclick="startExam()">Sign In & Start</button>
+      <button class="btn-blue" onclick="startExam()">Start Examination</button>
     </div>
 
     <div id="exam-screen" style="display:none;">
-      
-      <div class="exam-main">
-        <div class="student-info-bar">Candidate: <span id="display-name">---</span></div>
-        
-        <div id="question-container" class="question-box"></div>
-
-        <div class="nav-buttons">
-          <button class="btn-gray" id="prev-btn" onclick="changeQuestion(-1)">Previous</button>
-          <button class="btn-blue" id="next-btn" onclick="changeQuestion(1)">Next</button>
-        </div>
-      </div>
-
-      <div class="exam-sidebar">
-        <div class="passport-photo-box">
-          <img src="https://placehold.co/120x130?text=PASSPORT" alt="Candidate Passport Photo">
-        </div>
-
-        <div id="timer">Time Left: 02:00</div>
-        
-        <div style="font-weight: bold; font-size: 14px; color: #555;">Question Navigation:</div>
-        <div class="number-matrix" id="matrix-grid"></div>
-
-        <button class="btn-green" style="margin-top: auto;" onclick="submitExam()">Submit Examination</button>
-      </div>
-
+  
+  <div class="exam-main">
+    <div class="student-info-bar">Candidate: <span id="display-name">---</span></div>
+    <div id="question-container" class="question-box"></div>
+    <div class="nav-buttons">
+      <button class="btn-gray" id="prev-btn" onclick="changeQuestion(-1)">Previous</button>
+      <button class="btn-blue" id="next-btn" onclick="changeQuestion(1)">Next</button>
     </div>
+  </div> <div class="exam-sidebar">
+    <div class="passport-photo-box">
+      <img src="images/Candidate.jpg" alt="Candidate Passport Photo">
+    </div>
+    <div id="timer">Time Left: 02:00</div>
+    <div style="font-weight: bold; font-size: 14px; color: #555;">Question Navigation:</div>
+    <div class="number-matrix" id="matrix-grid"></div>
+    <button class="btn-green" style="margin-top: auto;" onclick="submitExam()">Submit Examination</button>
+  </div>
+
+</div>
 
     <div id="result" style="display: none;"></div>
   </div>

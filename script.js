@@ -17,7 +17,7 @@ const questions = [
   },
   {
     text: "What is the correct HTML element for inserting a line break?",
-    options: { a: "<break>", b: "<lb>", c: "<br>", d: "<hr>" },
+    options: { a: "break", b: "lb", c: "br", d: "hr" },
     correct: "c"
   },
   {
