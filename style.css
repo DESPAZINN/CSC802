@@ -5,13 +5,84 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Base Body Modifications for Fixed Header Position */
 body {
-  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  background: linear-gradient(135deg, #eef2f3, #8e9eab);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 80px 20px 20px 20px; /* Extra padding top for navbar header space */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* NEW TOP NAVIGATION BAR COMPONENT */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #002244; /* Dark professional corporate tone */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.nav-logo img {
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-links a {
+  color: #b0c4de;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: #ffffff;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 4px;
+}
+
+/* PLAIN BACKGROUND DECORATION ITEMS (Geometric Blur items) */
+.bg-decoration {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 51, 102, 0.05));
+  filter: blur(50px);
+  z-index: -1;
+}
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  left: -50px;
+}
+.shape-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  right: -50px;
 }
 
 .container {
@@ -19,9 +90,10 @@ body {
   width: 100%;
   max-width: 950px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-top: 6px solid #0066cc;
   padding: 25px;
+  z-index: 10; /* Keep it above background decoration shapes */
 }
 
 h1 {
@@ -33,9 +105,16 @@ h1 {
   letter-spacing: 1px;
 }
 
+/* Start Screen Branding Layout */
 #start-screen {
   text-align: center;
-  padding: 40px 20px;
+  padding: 20px 20px 40px 20px;
+}
+
+.portal-branding-img img {
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 #start-screen input {
@@ -77,6 +156,27 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center; /* Center side dashboard elements */
+}
+
+/* DYNAMIC PASSPORT ELEMENT CLASS */
+.passport-photo-box {
+  width: 130px;
+  height: 140px;
+  background: #ffffff;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+.passport-photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .student-info-bar {
@@ -86,6 +186,7 @@ h1 {
   font-weight: bold;
   color: #0044aa;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 #timer {
@@ -97,6 +198,7 @@ h1 {
   font-weight: bold;
   border-radius: 4px;
   letter-spacing: 1px;
+  width: 100%;
 }
 
 .question-box p {
@@ -115,6 +217,7 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s;
+  width: 100%;
 }
 
 .option-label:hover {
@@ -129,6 +232,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  width: 100%;
 }
 
 button {
@@ -152,6 +256,7 @@ button {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+  width: 100%;
 }
 
 .matrix-cell {

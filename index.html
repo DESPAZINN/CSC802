@@ -3,15 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSC802</title>
+  <title>CBT Portal - WAEC/JAMB Style</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <header class="top-navbar">
+    <div class="nav-logo">
+      <img src="https://placehold.co/40x40?text=CBT" alt="Exam Logo">
+      <span>MINISTRY OF EDUCATION CBT PORTAL</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#" class="active">Examination</a>
+      <a href="#" onclick="alert('System checks are normal. All peripherals functional.')">System Test</a>
+      <a href="#" onclick="alert('Instructions: Answer all questions. Do not refresh this page during the evaluation.')">Instructions</a>
+    </nav>
+  </header>
+
+  <div class="bg-decoration shape-1"></div>
+  <div class="bg-decoration shape-2"></div>
 
   <div class="container">
     <h1>CBT Examination Portal</h1>
 
     <div id="start-screen">
+      <div class="portal-branding-img">
+        <img src="https://placehold.co/100x100?text=PORTAL" alt="Portal Branding Badge">
+      </div>
       <input type="text" id="studentName" placeholder="Enter Candidate Full Name">
       <br>
       <button class="btn-blue" onclick="startExam()">Sign In & Start</button>
@@ -31,6 +49,10 @@
       </div>
 
       <div class="exam-sidebar">
+        <div class="passport-photo-box">
+          <img src="https://placehold.co/120x130?text=PASSPORT" alt="Candidate Passport Photo">
+        </div>
+
         <div id="timer">Time Left: 02:00</div>
         
         <div style="font-weight: bold; font-size: 14px; color: #555;">Question Navigation:</div>

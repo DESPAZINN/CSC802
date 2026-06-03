@@ -1,3 +1,4 @@
+// 1. EXTENDED DYNAMIC EXAM DATA
 const questions = [
   {
     text: "What does HTML stand for?",
@@ -26,31 +27,39 @@ const questions = [
   }
 ];
 
-let timeLeft = 120;
+// State Variables
+let timeLeft = 120; // 2 minutes
 let timer;
 let currentIdx = 0;
-let userAnswers = {};
+let userAnswers = {}; // Holds structure like { 0: 'a', 1: 'c' }
 
+// 2. ENGINE CONTROL FUNCTIONS
 function startExam() {
   const name = document.getElementById("studentName").value.trim();
+
   if (name === "") {
     alert("Please enter your candidate name before signing in.");
     return;
   }
+
   document.getElementById("display-name").innerText = name;
   document.getElementById("start-screen").style.display = "none";
   document.getElementById("exam-screen").style.display = "flex";
+
   buildMatrix();
   showQuestion(0);
   timer = setInterval(updateTimer, 1000);
 }
 
+// Displays current single question based on index mapping
 function showQuestion(index) {
   currentIdx = index;
   const q = questions[index];
   const container = document.getElementById("question-container");
+  
   let optionsHTML = "";
   for (let key in q.options) {
+    // Checking if user previously clicked an option to keep it selected
     const isChecked = userAnswers[index] === key ? "checked" : "";
     optionsHTML += `
       <label class="option-label">
@@ -59,13 +68,17 @@ function showQuestion(index) {
       </label>
     `;
   }
+
   container.innerHTML = `
     <p>Question ${index + 1} of ${questions.length}</p>
     <p>${q.text}</p>
     <div class="options-group">${optionsHTML}</div>
   `;
+
+  // Manage status updates for previous/next actions
   document.getElementById("prev-btn").disabled = (index === 0);
   document.getElementById("next-btn").innerText = (index === questions.length - 1) ? "Finish" : "Next";
+  
   updateMatrixHighlight();
 }
 
@@ -74,6 +87,7 @@ function changeQuestion(direction) {
   if (targetIndex >= 0 && targetIndex < questions.length) {
     showQuestion(targetIndex);
   } else if (targetIndex === questions.length) {
+    // Triggers submission warning if clicking "Next/Finish" on the final question
     if (confirm("Are you sure you want to finish and submit your exam?")) {
       submitExam();
     }
@@ -82,13 +96,17 @@ function changeQuestion(direction) {
 
 function recordAnswer(selectedKey) {
   userAnswers[currentIdx] = selectedKey;
+  
+  // Update cell indicators dynamically
   const cell = document.getElementById(`cell-${currentIdx}`);
   if (cell) cell.classList.add("answered");
 }
 
+// 3. NAVIGATION GRID MATRIX BUILDER
 function buildMatrix() {
   const grid = document.getElementById("matrix-grid");
   grid.innerHTML = "";
+  
   questions.forEach((_, idx) => {
     const cell = document.createElement("div");
     cell.className = "matrix-cell";
@@ -100,6 +118,7 @@ function buildMatrix() {
 }
 
 function updateMatrixHighlight() {
+  // Remove 'active' selection ring from all cells, apply onto current question cell
   document.querySelectorAll(".matrix-cell").forEach((cell, idx) => {
     if (idx === currentIdx) {
       cell.classList.add("active");
@@ -109,28 +128,38 @@ function updateMatrixHighlight() {
   });
 }
 
+// 4. TIMING UTILITIES
 function updateTimer() {
   timeLeft--;
+  
   let minutes = Math.floor(timeLeft / 60);
   let seconds = timeLeft % 60;
+  
+  // Zero-padding string display modification
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0" + seconds : seconds;
+
   document.getElementById("timer").innerText = `Time Left: ${minutes}:${seconds}`;
+
   if (timeLeft <= 0) {
     alert("Time is up! Your examination is being submitted automatically.");
     submitExam();
   }
 }
 
+// 5. EVALUATION LOGIC
 function submitExam() {
   clearInterval(timer);
   let score = 0;
+
   questions.forEach((q, idx) => {
     if (userAnswers[idx] === q.correct) {
       score++;
     }
   });
+
   document.getElementById("exam-screen").style.display = "none";
+  
   const resultDiv = document.getElementById("result");
   resultDiv.style.display = "block";
   resultDiv.innerHTML = `
